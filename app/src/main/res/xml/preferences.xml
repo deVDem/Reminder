@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:defaultValue="14"
+        android:dialogTitle="@string/fontsizet"
+        android:key="@string/pref_size"
+        android:summary="@string/setfontsi"
+        android:title="@string/fontsizes" />
+    <ListPreference
+        android:key="@string/pref_style"
+        android:title="@string/stylefont"
+        android:summary="@string/setstylef"
+        android:defaultValue="1"
+        android:entries="@array/text_style"
+        android:entryValues="@array/text_style"
+        android:dialogTitle="@string/selectf" />
+</PreferenceScreen>

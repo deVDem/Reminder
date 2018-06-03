@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9999ff</color>
+    <color name="colorPrimaryDark">#404040</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray">#808080</color>
+    <color name="black">#000000</color>
+    <color name="skytop">#67a1d8</color>
+    <color name="topdark">#4580b6</color>
+    <color name="buttonmus">#44ffffff</color>
+    <color name="bgfrs">#0000FF</color>
+    <color name="LLBlue">#0288D1</color>
+    <color name="LLBlueDark">#0277BD</color>
+    <color name="LLBlueAccent">#81D4FA</color>
+    <color name="lOrange">#F57C00</color>
+    <color name="LOrangeDark">#EF6C00</color>
+    <color name="LOrangeAccent">#FFCC80</color>
+    <color name="LGreen">#388E3C</color>
+    <color name="LGreenDark">#2E7D32</color>
+    <color name="LGreenAccent">#A5D6A7</color>
+    <color name="white">#ffffff</color>
+    <color name="LBlueDark">#283593</color>
+    <color name="LBlue">#303F9F</color>
+    <color name="LBlueAccent">#7986CB</color>
+    <color name="LPinkDark">#AD1457</color>
+    <color name="LPink">#C2185B</color>
+    <color name="LPinkAccent">#F48FB1</color>
+    <color name="DGreen">#008000</color>
+    <color name="DGreenDark">#007000</color>
+</resources>

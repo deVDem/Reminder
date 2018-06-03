@@ -1,0 +1,52 @@
+<resources>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+    <style name="AboutTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimaryDark">@color/skytop</item>
+    </style>
+    <style name="FirstTimeTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/LLBlueDark</item>
+        <item name="colorPrimary">@color/LLBlue</item>
+        <item name="colorAccent">@color/LLBlueAccent</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="AppThemeLightOrange" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/LOrangeDark</item>
+        <item name="colorPrimary">@color/lOrange</item>
+        <item name="colorAccent">@color/LOrangeAccent</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="AppThemeLightGreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/LGreenDark</item>
+        <item name="colorPrimary">@color/LGreen</item>
+        <item name="colorAccent">@color/LGreenAccent</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="AppThemeLightBlue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/LBlueDark</item>
+        <item name="colorPrimary">@color/LBlue</item>
+        <item name="colorAccent">@color/LBlueAccent</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="AppThemeLightPink" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/LPinkDark</item>
+        <item name="colorPrimary">@color/LPink</item>
+        <item name="colorAccent">@color/LPinkAccent</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="AppThemeDarkGreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimaryDark">@color/DGreenDark</item>
+        <item name="colorPrimary">@color/DGreen</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+</resources>
