@@ -8,7 +8,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 27
         versionCode 315
-        versionName "1.37"
+        versionName "1.37beta2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

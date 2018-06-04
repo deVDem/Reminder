@@ -16,5 +16,10 @@
             android:orderInCategory="102"
             android:title="@string/action_settingtheme"
             android:icon="@drawable/ic_settings"/>
+        <item
+            android:id="@+id/action_account"
+            android:orderInCategory="104"
+            android:title="Account"
+            android:icon="@android:drawable/sym_contact_card"/>
     </group>
 </menu>

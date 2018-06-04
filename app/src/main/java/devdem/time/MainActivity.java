@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             if(activ==2)  intent = new Intent(this, AboutActivity.class);
             if(activ==3)  intent = new Intent(this, NoteActivity.class);
             if(activ==4)  intent = new Intent(this, ThemeSetting.class);
+            if(activ==5)  intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         if (finishs) finish();
     }
@@ -126,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
                                 return true;
                             case R.id.action_themesetting:
                                 nextActivity(4, true);
+                                menuItem.setChecked(true);
+                                return true;
+                            case R.id.action_account:
+                                nextActivity(5, true);
                                 menuItem.setChecked(true);
                                 return true;
                         }
