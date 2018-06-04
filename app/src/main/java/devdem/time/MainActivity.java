@@ -62,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
             if(activ==3)  intent = new Intent(this, NoteActivity.class);
             if(activ==4)  intent = new Intent(this, ThemeSetting.class);
             if(activ==5)  intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            startActivity(intent);
+            overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
+        }
+        else startActivity(intent);
         if (finishs) finish();
     }
     @Override
