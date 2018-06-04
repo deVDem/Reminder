@@ -74,4 +74,14 @@
     <string name="mainmenu">Главное меню</string>
     <string name="open">Открыть</string>
     <string name="close">Закрыть</string>
+    <string name="signin">Вход</string>
+    <string name="loginemail">Имя пользователя/Email</string>
+    <string name="password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="notreg">У Вас нет аккаунта? <b>Зарегистрируйтесь</b> сейчас</string>
+    <string name="signup">Регистрация</string>
+    <string name="username">Имя пользователя</string>
+    <string name="cpassword">Подтвердите пароль</string>
+    <string name="spam">Я хочу получать информацию о приложении на почту</string>
+    <string name="account">Аккаунт</string>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -12,7 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/image_about" />
+        app:srcCompat="@drawable/image_about"
+        android:contentDescription="@string/app_name" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -24,7 +26,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textPersonName" />
 
     <EditText
@@ -36,8 +38,9 @@
         android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -47,7 +50,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="100dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:layout_marginLeft="100dp" />
 
@@ -60,7 +63,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
         android:ems="10"
-        android:hint="Confirm password"
+        android:hint="@string/cpassword"
         android:inputType="textPassword" />
 
     <CheckBox
@@ -73,17 +76,18 @@
         android:layout_marginTop="20dp"
         android:checked="true"
         android:gravity="fill_horizontal|center"
-        android:text="Я хочу получать информацию о приложении на почту" />
+        android:text="@string/spam"
+        android:layout_marginStart="100dp" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/chbEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:background="@drawable/loginbutton"
-        android:text="Sign up"
+        android:text="@string/signup"
         android:textColor="#fff" />
 
     <TextView
@@ -94,9 +98,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Sign up"
+        android:text="@string/signup"
         android:textColor="?attr/colorAccent"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

@@ -12,9 +12,17 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            resValue "string", "ip", "192.168.0.100"
+            resValue "string", "app_name", "Напоминалка (debug)"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "ip", "94.26.174.204"
+            resValue "string", "app_name", "Reminder"
         }
     }
 }

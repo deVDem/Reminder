@@ -74,4 +74,14 @@
     <string name="mainmenu">Головне меню</string>
     <string name="open">Відкрити</string>
     <string name="close">Закрити</string>
+    <string name="signin">Вхід</string>
+    <string name="loginemail">Ім\'я користувача/Email</string>
+    <string name="password">Пароль</string>
+    <string name="login">Увійти</string>
+    <string name="notreg">У Вас немає акаунта? <B>Зареєструйтеся</B> зараз</string>
+    <string name="signup">Реєстрація</string>
+    <string name="username">Ім\'я користувача</string>
+    <string name="cpassword">Підтвердіть пароль</string>
+    <string name="spam">Я хочу отримувати інформацію про програму на пошту</string>
+    <string name="account">Аккаунт</string>
 </resources>

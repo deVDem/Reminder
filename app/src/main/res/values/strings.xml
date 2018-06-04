@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Reminder</string>
     <string name="text1">Notification setting</string>
     <string name="text2">Enter the text below that you want to display</string>
     <string name="textupdate">Create notification</string>
@@ -74,4 +73,15 @@
     <string name="mainmenu">Main menu</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="signin">Sign in</string>
+    <string name="loginemail">Username/Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="notreg">Not registered? <b>Sign up</b> now</string>
+    <string name="signup">Sign up</string>
+    <string name="username">Username</string>
+    <string name="cpassword">Confirm password</string>
+    <string name="spam">I want to receive information about the application on the mail</string>
+    <string name="account">Account</string>
+
 </resources>

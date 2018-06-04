@@ -12,7 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/image_about" />
+        app:srcCompat="@drawable/image_about"
+        android:contentDescription="@string/app_name" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -22,9 +23,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Login/Email"
+        android:hint="@string/loginemail"
         android:inputType="textPersonName"
-        android:layout_marginLeft="100dp" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -33,9 +35,10 @@
         android:layout_below="@+id/etUsername"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        android:layout_marginLeft="100dp" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp" />
 
     <Button
         android:id="@+id/button4"
@@ -45,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:background="@drawable/loginbutton"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="#fff" />
 
     <TextView
@@ -56,7 +59,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
         android:clickable="true"
-        android:text="Not registered? Sign up now" />
+        android:text="@string/notreg"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/textView18"
@@ -65,9 +69,9 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Sing in"
+        android:text="@string/signin"
         android:textColor="?attr/colorAccent"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
