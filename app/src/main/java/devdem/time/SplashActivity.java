@@ -17,11 +17,13 @@ public class SplashActivity extends AppCompatActivity {
         if (!mNames.getBoolean(APP_PREFERENCES_FIRSTTIME, true)) {
             Intent intent = new Intent(this, MainActivity.class); // обозначения активностей
             startActivity(intent); // запустить активность
+            overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
             finish(); // закрыть активность
         }
         else {
             Intent intent = new Intent(this, FirstTimeActivity.class); // обозначения активностей
             startActivity(intent);// запустить активность
+            overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
             finish(); // закрыть активность
         }
     }

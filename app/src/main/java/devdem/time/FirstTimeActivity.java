@@ -14,11 +14,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import java.util.Random;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Random;
 
 import static devdem.time.MainActivity.APP_PREFERENCES_AD;
 
@@ -109,6 +110,7 @@ public class FirstTimeActivity extends AppCompatActivity {
                                                 saveFile(FILENAME);
                                                 Intent intent = new Intent(FirstTimeActivity.this, MainActivity.class);
                                                 startActivity(intent);
+                                                overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
                                                 finish();
                                             }
                                         }.start();

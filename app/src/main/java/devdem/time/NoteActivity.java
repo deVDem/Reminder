@@ -9,7 +9,6 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -43,6 +42,7 @@ public class NoteActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
         finish();
     }
 
@@ -81,6 +81,7 @@ public class NoteActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent intent = new Intent();
                 intent.setClass(this, NoteSetting.class);
+                overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
                 startActivity(intent);
                 return true;
             case R.id.action_export:

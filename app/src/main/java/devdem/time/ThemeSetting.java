@@ -48,6 +48,7 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         }
         Intent intent = new Intent(this, SplashActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
         finish();
     }
 
