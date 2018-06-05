@@ -79,10 +79,9 @@ public class NoteActivity extends AppCompatActivity {
         Resources res = context.getResources();
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent intent = new Intent();
-                intent.setClass(this, NoteSetting.class);
-                overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
+                Intent intent = new Intent(this, NoteSetting.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
                 return true;
             case R.id.action_export:
                 LayoutInflater li = LayoutInflater.from(context);

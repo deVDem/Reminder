@@ -14,6 +14,7 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                         // set item as selected to persist highlight
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
@@ -134,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
                                 menuItem.setChecked(true);
                                 return true;
                             case R.id.action_account:
+                                Toast toast = Toast.makeText(getApplicationContext(),
+                                        "Not working, just look at this UI", Toast.LENGTH_LONG);
+                                toast.show();
                                 nextActivity(5, true);
                                 menuItem.setChecked(true);
                                 return true;
@@ -329,11 +333,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    public void onClear() {
-        SharedPreferences.Editor editor = mNames.edit();
-        editor.clear();
-        editor.apply();
     }
     public void onDeleteNo(View view) {
         Context context = getApplicationContext();
