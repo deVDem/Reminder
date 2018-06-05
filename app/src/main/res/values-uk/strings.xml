@@ -80,8 +80,14 @@
     <string name="login">Увійти</string>
     <string name="notreg">У Вас немає акаунта? <B>Зареєструйтеся</B> зараз</string>
     <string name="signup">Реєстрація</string>
-    <string name="username">Ім\'я користувача</string>
+    <string name="username">Логін</string>
     <string name="cpassword">Підтвердіть пароль</string>
     <string name="spam">Я хочу отримувати інформацію про програму на пошту</string>
     <string name="account">Аккаунт β</string>
+    <string name="name">ім\'я</string>
+    <string name="psnot">Паролі не співпадають</string>
+    <string name="notpas">Логін і / або пароль не збігається</string>
+    <string name="regfail">Неможливо створити обліковий запис. \nМожливі причини: \n Відсутність інтернету на своєму пристрої;\n Неполадки на стороні сервера;\n Даний логін вже зайнятий;\n Ця пошта вже зайнята</string>
+    <string name="retry">Повторити</string>
+    <string name="nopole">Не всі поля заповнені</string>
 </resources>

@@ -80,8 +80,14 @@
     <string name="login">Login</string>
     <string name="notreg">Not registered? <b>Sign up</b> now</string>
     <string name="signup">Sign up</string>
-    <string name="username">Username</string>
+    <string name="username">Login</string>
     <string name="cpassword">Confirm password</string>
     <string name="spam">I want to receive information about the application on the mail</string>
     <string name="account">Account β</string>
+    <string name="name">Name</string>
+    <string name="psnot">Passwords do not match</string>
+    <string name="notpas">Login and/or password does not match</string>
+    <string name="regfail">Can not create account.\nPossible causes: \n No internet on your device; \n Server side problems; \n This login is already taken; \n This mail is already taken</string>
+    <string name="retry">Retry</string>
+    <string name="nopole">Not all fields are filled out</string>
 </resources>

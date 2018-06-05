@@ -3,60 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/textView12"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/shape_oval"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/image_about"
-        android:contentDescription="@string/app_name" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView18"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/loginemail"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etUsername"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp" />
+    android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button4"
-        style="@style/Widget.AppCompat.Button"
+        android:id="@+id/button4l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etPassword"
+        android:layout_below="@+id/etPasswordl"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:background="@drawable/loginbutton"
@@ -64,34 +17,90 @@
         android:onClick="LoginClick"
         android:text="@string/login"
         android:textColor="#fff"
-        android:visibility="visible" />
+        android:translationZ="1dp"
+        android:visibility="invisible"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageView
+        android:id="@+id/imageViewl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="visible"
+        app:srcCompat="@drawable/image_about" />
+
+    <EditText
+        android:id="@+id/etUsernamel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView18l"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/loginemail"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        tools:ignore="RtlHardcoded" />
+
+    <EditText
+        android:id="@+id/etPasswordl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etUsernamel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:imeOptions="actionGo"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:visibility="visible"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView12l"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_below="@+id/button4"
+        android:layout_below="@+id/button4l"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:text="@string/notreg" />
+        android:text="@string/notreg"
+        android:visibility="visible" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/textView18l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/imageViewl"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/signin"
         android:textColor="?attr/colorAccent"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imageView2l"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:translationZ="2dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/shape_oval"
+        tools:ignore="ContentDescription,UnusedAttribute" />
 
     <TextView
-        android:id="@+id/etSignin"
+        android:id="@+id/etSigninl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -101,6 +110,8 @@
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:visibility="invisible" />
+        android:translationZ="2dp"
+        android:visibility="invisible"
+        tools:ignore="UnusedAttribute" />
 
 </RelativeLayout>

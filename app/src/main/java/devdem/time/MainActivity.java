@@ -1,4 +1,5 @@
 package devdem.time;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -63,12 +64,20 @@ public class MainActivity extends AppCompatActivity {
             if(activ==3)  intent = new Intent(this, NoteActivity.class);
             if(activ==4)  intent = new Intent(this, ThemeSetting.class);
             if(activ==5)  intent = new Intent(this, LoginActivity.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            startActivity(intent);
-            overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
-        }
-        else startActivity(intent);
+        startActivity(intent);
+        overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
         if (finishs) finish();
+    }
+    public int getStatusBarHeight() {
+        int result = 0;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                result = getResources().getDimensionPixelSize(resourceId);
+            }
+        }
+        return result;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         if (actionbar != null) {
@@ -136,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                                 return true;
                             case R.id.action_account:
                                 Toast toast = Toast.makeText(getApplicationContext(),
-                                        "Not working, just look at this UI", Toast.LENGTH_LONG);
+                                        "Not working, just you can register now. No more. Please don't flood", Toast.LENGTH_LONG);
                                 toast.show();
                                 nextActivity(5, true);
                                 menuItem.setChecked(true);
@@ -290,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                     .setContentText(opisanie)
                     .setOngoing(true);
         }
-        Notification notification = builder.getNotification();
+        Notification notification = builder.build();
         NotificationManager notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
@@ -337,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDeleteNo(View view) {
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
-        Notification notification = builder.getNotification();
+        Notification notification = builder.build();
         NotificationManager notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
@@ -345,22 +355,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     protected boolean isOnline() {
-        String cs = Context.CONNECTIVITY_SERVICE;
         ConnectivityManager cm = (ConnectivityManager)
-                getSystemService(cs);
-        if (cm.getActiveNetworkInfo() == null) {
-            return false;
-        } else {
-            return true;
-        }
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
+        return cm.getActiveNetworkInfo() != null;
     }
     public void onChange(View view) {
         LayoutInflater li = LayoutInflater.from(context);
-        View promptsView = li.inflate(R.layout.dialog_change, null);
+        @SuppressLint("InflateParams") View promptsView = li.inflate(R.layout.dialog_change, null);
         AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(context);
         mDialogBuilder.setView(promptsView);
-        final EditText zag = (EditText) promptsView.findViewById(R.id.edittext3);
-        final EditText sod = (EditText) promptsView.findViewById(R.id.edittext4);
+        final EditText zag = promptsView.findViewById(R.id.edittext3);
+        final EditText sod = promptsView.findViewById(R.id.edittext4);
         zag.setText(inputtext1);
         sod.setText(inputtext2);
         mDialogBuilder

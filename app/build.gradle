@@ -5,7 +5,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "devdem.time"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 316
         versionName "1.37beta2"
@@ -14,12 +14,12 @@ android {
     buildTypes {
         debug {
             versionNameSuffix "-debug"
-            resValue "string", "ip", "192.168.0.100"
+            resValue "string", "ipreg", "192.168.0.100/Reminder/Register.php"
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue "string", "ip", "94.26.174.204"
+            resValue "string", "ipreg", "94.26.174.204/Reminder/Register.php"
         }
     }
 }
@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
+    compile 'com.android.volley:volley:1.0.0'
 }

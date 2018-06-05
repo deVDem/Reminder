@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,6 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static devdem.time.MainActivity.APP_PREFERENCES;
 import static devdem.time.MainActivity.APP_PREFERENCES_STYLE;
@@ -29,15 +37,14 @@ public class LoginActivity extends AppCompatActivity {
     TextView tx18;
     TextView signintx;
 
-    private void nextActivity(int activ, boolean finishs) {
+    private void nextActivity(int activ) {
         Intent intent = new Intent(this, MainActivity.class);
         if (activ == 1) intent = new Intent(this, MainActivity.class);
-        if (activ == 2) intent = new Intent(this, RegisterActivity.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            startActivity(intent);
-            overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
-        } else startActivity(intent);
-        if (finishs) finish();
+        else if (activ == 2) intent = new Intent(this, RegisterActivity.class);
+        else if (activ == 3) intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
+        finish();
     }
 
     @Override
@@ -63,19 +70,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        TextView registerbtn = findViewById(R.id.textView12);
+        registerbtn = findViewById(R.id.textView12l);
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity(2, true);
+                nextActivity(2);
             }
         });
-        logo = findViewById(R.id.imageView);
-        etUn = findViewById(R.id.etUsername);
-        etPs = findViewById(R.id.etPassword);
-        loginbtn = findViewById(R.id.button4);
-        tx18 = findViewById(R.id.textView18);
-        signintx = findViewById(R.id.etSignin);
+        logo = findViewById(R.id.imageViewl);
+        etUn = findViewById(R.id.etUsernamel);
+        etPs = findViewById(R.id.etPasswordl);
+        loginbtn = findViewById(R.id.button4l);
+        tx18 = findViewById(R.id.textView18l);
+        signintx = findViewById(R.id.etSigninl);
         if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.anim_loginreg);
             logo.setAnimation(anim);
@@ -91,42 +98,75 @@ public class LoginActivity extends AppCompatActivity {
             registerbtn.setAnimation(anim);
             registerbtn.animate();
         }
+        registerbtn.setVisibility(View.VISIBLE);
+        loginbtn.setVisibility(View.VISIBLE);
+        etUn.setVisibility(View.VISIBLE);
+        etPs.setVisibility(View.VISIBLE);
+        tx18.setVisibility(View.VISIBLE);
+        signintx.setVisibility(View.GONE);
     }
 
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        nextActivity(1, true);
+        nextActivity(1);
     }
 
     public void LoginClick(final View view) {
-        ImageView oval = findViewById(R.id.imageView2);
+        final ImageView oval = findViewById(R.id.imageView2l);
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.oval_in);
         oval.setVisibility(View.VISIBLE);
         oval.setAnimation(anim);
         oval.animate();
-        anim.setAnimationListener(new Animation.AnimationListener() {
+        registerbtn.setVisibility(View.GONE);
+        view.setVisibility(View.GONE);
+        view.setClickable(false);
+        etUn.setVisibility(View.GONE);
+        etPs.setVisibility(View.GONE);
+        tx18.setVisibility(View.GONE);
+        signintx.setVisibility(View.VISIBLE);
+        Animation anim2 = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.anim_loginreg);
+        signintx.setAnimation(anim2);
+        final String username = etUn.getText().toString();
+        final String password = etPs.getText().toString();
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                loginbtn.setVisibility(View.INVISIBLE);
-            }
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+                        String name = jsonResponse.getString("name");
+                        Toast info = Toast.makeText(LoginActivity.this, "Привет, "+name+"!", Toast.LENGTH_LONG);
+                        info.show();
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                etUn.setVisibility(View.INVISIBLE);
-                etPs.setVisibility(View.INVISIBLE);
-                tx18.setVisibility(View.INVISIBLE);
-                signintx.setVisibility(View.VISIBLE);
-                Animation anim2 = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.anim_loginreg);
-                signintx.setAnimation(anim2);
-            }
+                    }else{
+                        new CountDownTimer(100, 3000) {
+                            @Override
+                            public void onTick(long countDownInterval) {
+                            }
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {
+                            @Override
+                            public void onFinish() {
+                                nextActivity(3);
+                            }
+                        }.start();
+                        Toast tss = Toast.makeText(LoginActivity.this, R.string.notpas, Toast.LENGTH_LONG);
+                        tss.show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
-        });
+        };
+
+        LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+        queue.add(loginRequest);
+
+
     }
 
 }

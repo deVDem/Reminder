@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="devdem.time.ThemeSetting"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
     <Space
         android:layout_width="match_parent"
@@ -44,14 +44,16 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="@string/choose"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:entries="@array/themes" />
+                android:entries="@array/themes"
+                tools:ignore="InefficientWeight" />
         </LinearLayout>
 
         <Switch
@@ -67,8 +69,9 @@
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="@string/graptext" />
+            android:paddingStart="10dp"
+            android:text="@string/graptext"
+            tools:ignore="RtlSymmetry" />
 
         <Switch
             android:id="@+id/switch4"
@@ -83,8 +86,9 @@
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="@string/noadabout" />
+            android:paddingStart="10dp"
+            android:text="@string/noadabout"
+            tools:ignore="RtlSymmetry" />
 
 
     </LinearLayout>

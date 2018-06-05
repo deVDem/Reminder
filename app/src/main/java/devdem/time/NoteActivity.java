@@ -1,5 +1,6 @@
 package devdem.time;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -45,6 +46,17 @@ public class NoteActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
         finish();
     }
+    public int getStatusBarHeight() {
+        int result = 0;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                result = getResources().getDimensionPixelSize(resourceId);
+            }
+        }
+        return result;
+    }
 
     public void onCreate(Bundle savedInstanceState) {
         mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
@@ -66,6 +78,7 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
         Toolbar toolbar = findViewById(R.id.toolbar2);
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
         setSupportActionBar(toolbar);
         mEditText = findViewById(R.id.editText);
     }
@@ -85,7 +98,7 @@ public class NoteActivity extends AppCompatActivity {
                 return true;
             case R.id.action_export:
                 LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.dialog_export, null);
+                @SuppressLint("InflateParams") View promptsView = li.inflate(R.layout.dialog_export, null);
                 AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(context);
                 mDialogBuilder.setView(promptsView);
                 mDialogBuilder
@@ -131,7 +144,7 @@ public class NoteActivity extends AppCompatActivity {
                 StringBuilder builder = new StringBuilder();
 
                 while ((line = reader.readLine()) != null) {
-                    builder.append(line + "\n");
+                    builder.append(line).append("\n");
                 }
 
                 inputStream.close();

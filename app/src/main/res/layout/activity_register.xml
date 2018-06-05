@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,7 +16,7 @@
         android:contentDescription="@string/app_name" />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView17"
@@ -26,8 +25,33 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        tools:ignore="RtlHardcoded" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:ems="10"
         android:hint="@string/username"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        tools:ignore="RtlHardcoded" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:translationZ="2dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/shape_oval"
+        tools:ignore="ContentDescription,UnusedAttribute" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -40,10 +64,10 @@
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPasswordr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etEmail"
@@ -52,32 +76,35 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:layout_marginLeft="100dp" />
+        android:layout_marginLeft="100dp"
+        tools:ignore="RtlHardcoded" />
 
     <EditText
-        android:id="@+id/etConfimPass"
+        android:id="@+id/etConfimPassr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etPassword"
+        android:layout_below="@+id/etPasswordr"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
         android:ems="10"
         android:hint="@string/cpassword"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        tools:ignore="RtlHardcoded" />
 
     <CheckBox
         android:id="@+id/chbEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etConfimPass"
+        android:layout_below="@+id/etConfimPassr"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:checked="true"
         android:gravity="fill_horizontal|center"
         android:text="@string/spam"
-        android:layout_marginStart="100dp" />
+        android:layout_marginStart="100dp"
+        tools:ignore="RtlHardcoded" />
 
     <Button
         android:id="@+id/button4"
@@ -88,7 +115,10 @@
         android:layout_marginTop="29dp"
         android:background="@drawable/loginbutton"
         android:text="@string/signup"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:translationZ="1dp"
+        android:onClick="RegisterClick"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView17"
@@ -102,5 +132,18 @@
         android:textColor="?attr/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
-
+    <TextView
+        android:id="@+id/etSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/signup"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:translationZ="2dp"
+        android:visibility="invisible"
+        tools:ignore="UnusedAttribute" />
 </RelativeLayout>

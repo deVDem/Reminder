@@ -80,8 +80,14 @@
     <string name="login">Войти</string>
     <string name="notreg">У Вас нет аккаунта? <b>Зарегистрируйтесь</b> сейчас</string>
     <string name="signup">Регистрация</string>
-    <string name="username">Имя пользователя</string>
+    <string name="username">Логин</string>
     <string name="cpassword">Подтвердите пароль</string>
     <string name="spam">Я хочу получать информацию о приложении на почту</string>
     <string name="account">Аккаунт β</string>
+    <string name="name">Имя</string>
+    <string name="psnot">Пароли не совпадают</string>
+    <string name="notpas">Логин и/или пароль не совпадает</string>
+    <string name="regfail">Невозможно создать аккаунт.\nВозможные причины:\n Отсутствие интернета на Вашем устройстве;\n Неполадки на стороне сервера\n Данный логин уже занят\n Данная почта уже занята</string>
+    <string name="retry">Повторить</string>
+    <string name="nopole">Не все поля заполнены</string>
 </resources>

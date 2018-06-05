@@ -4,17 +4,29 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
     <style name="FirstTimeTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/black</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
     <style name="AppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/LLBlueDark</item>
@@ -22,6 +34,11 @@
         <item name="colorAccent">@color/LLBlueAccent</item>
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:navigationBarColor">@color/LLBlueDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
     <style name="AppThemeLightOrange" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/LOrangeDark</item>
@@ -29,6 +46,11 @@
         <item name="colorAccent">@color/LOrangeAccent</item>
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:navigationBarColor">@color/LOrangeDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
     <style name="AppThemeLightGreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/LGreenDark</item>
@@ -36,6 +58,11 @@
         <item name="colorAccent">@color/LGreenAccent</item>
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:navigationBarColor">@color/LGreenDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
     <style name="AppThemeLightBlue" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/LBlueDark</item>
@@ -43,6 +70,11 @@
         <item name="colorAccent">@color/LBlueAccent</item>
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:navigationBarColor">@color/LBlueDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
 
     <style name="AppThemeLightPink" parent="Theme.AppCompat.Light.NoActionBar">
@@ -51,6 +83,11 @@
         <item name="colorAccent">@color/LPinkAccent</item>
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:navigationBarColor">@color/LPinkDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
 
     <style name="AppThemeDarkGreen" parent="Theme.AppCompat.NoActionBar">
@@ -58,5 +95,10 @@
         <item name="colorPrimary">@color/DGreen</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:navigationBarColor">@color/DGreenDark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
 </resources>
