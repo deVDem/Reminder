@@ -90,4 +90,8 @@
     <string name="regfail">Неможливо створити обліковий запис. \nМожливі причини: \n Відсутність інтернету на своєму пристрої;\n Неполадки на стороні сервера;\n Даний логін вже зайнятий;\n Ця пошта вже зайнята</string>
     <string name="retry">Повторити</string>
     <string name="nopole">Не всі поля заповнені</string>
+    <string name="dbsearch">Виявлено, що інформація нагадування в ньому не відповідає на сервері. Куди синхронізувати?</string>
+    <string name="server">Сервер</string>
+    <string name="phone">Телефон</string>
+    <string name="cancel">Відміна</string>
 </resources>

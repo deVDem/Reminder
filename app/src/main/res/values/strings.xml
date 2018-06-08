@@ -90,4 +90,8 @@
     <string name="regfail">Can not create account.\nPossible causes: \n No internet on your device; \n Server side problems; \n This login is already taken; \n This mail is already taken</string>
     <string name="retry">Retry</string>
     <string name="nopole">Not all fields are filled out</string>
+    <string name="dbsearch">It is found that the reminder information on the device does not match on the server. Where to synchronize?</string>
+    <string name="server">Server</string>
+    <string name="phone">Phone</string>
+    <string name="cancel">Cancel</string>
 </resources>

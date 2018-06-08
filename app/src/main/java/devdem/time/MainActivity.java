@@ -1,4 +1,5 @@
 package devdem.time;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -33,11 +34,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
+
     public int version = BuildConfig.VERSION_CODE;
     public String inputtext1;
     public String inputtext2;
@@ -51,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_DIALOG = "dialog";
     public static final String APP_PREFERENCES_AD = "noad";
     public static final String APP_PREFERENCES_ADVANCE = "advance";
+    public static final String APP_PREFERENCES_LOGIN = "login";
+    public static final String APP_PREFERENCES_PASSWORD = "password";
+    public static final String APP_PREFERENCES_ACCOUNT = "account";
+    private String zagolovok;
+    private String opisanie;
     private SharedPreferences mNames;
     // новый тип
     final Context context = this;
@@ -211,7 +226,77 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("dialog", false);
             editor.apply();
         }
+        if (mNames.getBoolean(APP_PREFERENCES_ACCOUNT, false)) {
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.getBoolean("success");
+                        if (success) {
+                            String name = jsonResponse.getString("name");
+                            zagolovok = jsonResponse.getString("zagolovok");
+                            opisanie = jsonResponse.getString("opisanie");
+                            if (!Objects.equals(inputtext1, zagolovok) || !Objects.equals(inputtext2, opisanie)) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                builder.setMessage(R.string.dbsearch)
+                                        .setCancelable(false)
+                                        .setPositiveButton(R.string.server,
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                })
+                                        .setNeutralButton(R.string.phone,
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int id) {
+                                                        inputtext2 = opisanie;
+                                                        inputtext1 = zagolovok;
+                                                        onSave();
+                                                        if (!big) {
+                                                            onCreateNotification(inputtext1, inputtext2);
+                                                        } else {
+                                                            onCreateNotificationBig(inputtext1, inputtext2);
+                                                        }
+                                                        dialog.cancel();
+                                                    }
+                                                })
+                                        .setNegativeButton(R.string.cancel,
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+
+                                    builder.create();
+                            }
+                            Toast info = Toast.makeText(MainActivity.this, "Привет, " + name + "!", Toast.LENGTH_LONG);
+                            info.show();
+                        } else {
+                            Toast tss = Toast.makeText(MainActivity.this, R.string.notpas, Toast.LENGTH_LONG);
+                            tss.show();
+                            SharedPreferences.Editor editor = mNames.edit();
+                            editor.putBoolean(APP_PREFERENCES_ACCOUNT, false);
+                            editor.apply();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            };
+
+            LoginRequest loginRequest = new LoginRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), responseListener);
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            queue.add(loginRequest);
+        }
+
     }
+
+
     public void onCreateNotificationBig(String zagolovok, String opisanie) {
         Context context = getApplicationContext();
         Intent notificationIntent = new Intent(context, MainActivity.class);

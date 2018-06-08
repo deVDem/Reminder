@@ -28,6 +28,10 @@ import static devdem.time.MainActivity.APP_PREFERENCES_STYLE;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String APP_PREFERENCES_PERFORMANCE = "graphics";
+    public static final String APP_PREFERENCES_LOGIN = "login";
+    public static final String APP_PREFERENCES_PASSWORD = "password";
+    public static final String APP_PREFERENCES_ACCOUNT = "account";
+    SharedPreferences mNames;
 
     TextView registerbtn;
     ImageView logo;
@@ -49,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences mNames;
         mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 1) {
             setTheme(R.style.AppTheme);
@@ -140,7 +143,11 @@ public class LoginActivity extends AppCompatActivity {
                         String name = jsonResponse.getString("name");
                         Toast info = Toast.makeText(LoginActivity.this, "Привет, "+name+"!", Toast.LENGTH_LONG);
                         info.show();
-
+                        SharedPreferences.Editor editor = mNames.edit();
+                        editor.putString(APP_PREFERENCES_LOGIN, username);
+                        editor.putString(APP_PREFERENCES_PASSWORD, password);
+                        editor.putBoolean(APP_PREFERENCES_ACCOUNT, true);
+                        editor.apply();
                     }else{
                         new CountDownTimer(100, 3000) {
                             @Override

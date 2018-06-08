@@ -90,4 +90,8 @@
     <string name="regfail">Невозможно создать аккаунт.\nВозможные причины:\n Отсутствие интернета на Вашем устройстве;\n Неполадки на стороне сервера\n Данный логин уже занят\n Данная почта уже занята</string>
     <string name="retry">Повторить</string>
     <string name="nopole">Не все поля заполнены</string>
+    <string name="dbsearch">Обнаружено, что информация напоминания на устройстве не соответствует на сервере. Куда синхронизировать?</string>
+    <string name="server">Сервер</string>
+    <string name="phone">Телефон</string>
+    <string name="cancel">Отмена</string>
 </resources>
