@@ -17,7 +17,7 @@
     <string name="pref_style_bold">Напівжирний</string>
     <string name="pref_style_italic">Курсив</string>
     <string name="about">Про программу</string>
-    <string name="creator">Творець: Роман Медведев</string>
+    <string name="creator">Творець: deVDem</string>
     <string name="welcome">Привіт</string>
     <string name="firstset">Виконуються первісні налаштування</string>
     <string name="letsgo">Починаємо</string>
@@ -94,4 +94,22 @@
     <string name="server">Сервер</string>
     <string name="phone">Телефон</string>
     <string name="cancel">Відміна</string>
+    <string name="savesettingssync">Налаштування збережені. Синхронізовано</string>
+    <string name="savesettingssyncerr">Налаштування збережені. Помилка синхронізації</string>
+    <string name="info">Про акаунті</string>
+    <string name="settinguser">Налаштування користувача</string>
+    <string name="changepass">Змінити пароль</string>
+    <string name="changename">Змінити ім\'я</string>
+    <string name="changeemail">Змінити E-Mail адреса</string>
+    <string name="deleteaccount">Видалити акаунт</string>
+    <string name="spamon">Розсилка про програму включена</string>
+    <string name="spamoff">Розсилка про програму відключена</string>
+    <string name="offspam">Відключити розсилку про програму</string>
+    <string name="onspam">Включити розсилку про програму</string>
+    <string name="by_devdem">by deVDem</string>
+    <string name="success">Успіх</string>
+    <string name="lengtherr">Неприпустима довжина (від 2-ух символів)</string>
+    <string name="newpass">Новий пароль</string>
+    <string name="newemail">Новий E-Mail адреса</string>
+    <string name="erremail">Некоректний E-Mail адреса</string>
 </resources>

@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_LOGIN = "login";
     public static final String APP_PREFERENCES_PASSWORD = "password";
     public static final String APP_PREFERENCES_ACCOUNT = "account";
-    private String zagolovok;
-    private String opisanie;
+    String one;
+    String two;
     private SharedPreferences mNames;
     // новый тип
     final Context context = this;
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             if(activ==3)  intent = new Intent(this, NoteActivity.class);
             if(activ==4)  intent = new Intent(this, ThemeSetting.class);
             if(activ==5)  intent = new Intent(this, LoginActivity.class);
+            if(activ==6)  intent = new Intent(this, UserActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
         if (finishs) finish();
@@ -160,10 +161,8 @@ public class MainActivity extends AppCompatActivity {
                                 menuItem.setChecked(true);
                                 return true;
                             case R.id.action_account:
-                                Toast toast = Toast.makeText(getApplicationContext(),
-                                        "Not working, just you can register now. No more. Please don't flood", Toast.LENGTH_LONG);
-                                toast.show();
-                                nextActivity(5, true);
+                                if(mNames.getBoolean(APP_PREFERENCES_ACCOUNT, false)) nextActivity(6, true);
+                                else nextActivity(5, true);
                                 menuItem.setChecked(true);
                                 return true;
                         }
@@ -182,8 +181,8 @@ public class MainActivity extends AppCompatActivity {
         // ad end
         final ImageView spenner = findViewById(R.id.spenner);
         final Animation anim = AnimationUtils.loadAnimation(this, R.anim.spenner_anim);
-        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
-            new CountDownTimer(50000000, 60000) {
+        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) { new CountDownTimer(50000000, 60000) {
+
                 @Override
                 public void onTick(long countDownInterval) {
                     spenner.startAnimation(anim);
@@ -235,25 +234,24 @@ public class MainActivity extends AppCompatActivity {
                         boolean success = jsonResponse.getBoolean("success");
                         if (success) {
                             String name = jsonResponse.getString("name");
-                            zagolovok = jsonResponse.getString("zagolovok");
-                            opisanie = jsonResponse.getString("opisanie");
-                            if (!Objects.equals(inputtext1, zagolovok) || !Objects.equals(inputtext2, opisanie)) {
+                            one = jsonResponse.getString("zagolovok");
+                            two = jsonResponse.getString("opisanie");
+                            if (!Objects.equals(inputtext1, one) || !Objects.equals(inputtext2, two)) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                                 builder.setMessage(R.string.dbsearch)
                                         .setCancelable(false)
                                         .setPositiveButton(R.string.server,
                                                 new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog,
-                                                                        int id) {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        SyncData();
                                                         dialog.cancel();
                                                     }
                                                 })
-                                        .setNeutralButton(R.string.phone,
+                                        .setNegativeButton(R.string.phone,
                                                 new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog,
-                                                                        int id) {
-                                                        inputtext2 = opisanie;
-                                                        inputtext1 = zagolovok;
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        inputtext2 = two;
+                                                        inputtext1 = one;
                                                         onSave();
                                                         if (!big) {
                                                             onCreateNotification(inputtext1, inputtext2);
@@ -263,17 +261,17 @@ public class MainActivity extends AppCompatActivity {
                                                         dialog.cancel();
                                                     }
                                                 })
-                                        .setNegativeButton(R.string.cancel,
+                                        .setNeutralButton(R.string.cancel,
                                                 new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog,
-                                                                        int id) {
+                                                    public void onClick(DialogInterface dialog, int id) {
                                                         dialog.cancel();
                                                     }
                                                 });
-
                                     builder.create();
+                                    builder.show();
                             }
-                            Toast info = Toast.makeText(MainActivity.this, "Привет, " + name + "!", Toast.LENGTH_LONG);
+                            Context c = MainActivity.this;
+                            Toast info = Toast.makeText(MainActivity.this, c.getString(R.string.welcome)+", "+name + "!", Toast.LENGTH_LONG);
                             info.show();
                         } else {
                             Toast tss = Toast.makeText(MainActivity.this, R.string.notpas, Toast.LENGTH_LONG);
@@ -377,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setContentIntent(contentIntent)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher))
-                    .setTicker(res.getString(R.string.app_name))
+                    .setTicker(zagolovok)
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setContentTitle(zagolovok)
@@ -410,21 +408,6 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
-                Intent intent;
-                return true;
-            case R.id.action_about:
-                intent = new Intent(this, AboutActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.action_note:
-                intent = new Intent(this, NoteActivity.class);
-                startActivity(intent);
-                finish();
-                return true;
-            case R.id.action_themesetting:
-                intent = new Intent(this, ThemeSetting.class);
-                startActivity(intent);
-                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -463,9 +446,12 @@ public class MainActivity extends AppCompatActivity {
                                 inputtext2 = String.valueOf(sod.getText());
                                 big = true;
                                 onSave();
-                                Toast toast = Toast.makeText(getApplicationContext(),
-                                        R.string.savesettings, Toast.LENGTH_LONG);
-                                toast.show();
+                                if (mNames.getBoolean(APP_PREFERENCES_ACCOUNT, false)) SyncData();
+                                else {
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            R.string.savesettings, Toast.LENGTH_LONG);
+                                    toast.show();
+                                }
                             }
                         })
                 .setNegativeButton(R.string.no,
@@ -475,9 +461,12 @@ public class MainActivity extends AppCompatActivity {
                                 inputtext2 = String.valueOf(sod.getText());
                                 big=false;
                                 onSave();
-                                Toast toast = Toast.makeText(getApplicationContext(),
-                                        R.string.savesettings, Toast.LENGTH_LONG);
-                                toast.show();
+                                if (mNames.getBoolean(APP_PREFERENCES_ACCOUNT, false)) SyncData();
+                                else {
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            R.string.savesettings, Toast.LENGTH_LONG);
+                                    toast.show();
+                                }
                                 dialog.cancel();
                             }
                         });
@@ -485,5 +474,34 @@ public class MainActivity extends AppCompatActivity {
 
         //и отображаем его:
         alertDialog.show();
+    }
+    public void SyncData() {
+        Response.Listener<String> responseListeners = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponses = new JSONObject(response);
+                    boolean success = jsonResponses.getBoolean("success");
+                    if (success) {
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                R.string.savesettingssync, Toast.LENGTH_LONG);
+                        toast.show();
+                    } else {
+                        SharedPreferences.Editor editor = mNames.edit();
+                        editor.putBoolean("account", false);
+                        editor.putString("login", "");
+                        editor.putString("password", "");
+                        editor.apply();
+                        Toast updfail = Toast.makeText(MainActivity.this, R.string.savesettingssyncerr, Toast.LENGTH_LONG);
+                        updfail.show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        UpdateRequest updateRequest = new UpdateRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), inputtext1, inputtext2, responseListeners);
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        queue.add(updateRequest);
     }
 }

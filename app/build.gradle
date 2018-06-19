@@ -7,25 +7,23 @@ android {
         applicationId "devdem.time"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 316
-        versionName "1.37beta2"
+        versionCode 317
+        versionName "1.38"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
             versionNameSuffix "-debug"
-            resValue "string", "ipreg", "192.168.0.100/Reminder/Register.php"
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue "string", "ipreg", "94.26.174.204/Reminder/Register.php"
         }
     }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
@@ -33,5 +31,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
-    compile 'com.android.volley:volley:1.0.0'
+    implementation 'com.android.volley:volley:1.0.0'
 }

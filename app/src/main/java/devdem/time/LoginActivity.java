@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -46,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         if (activ == 1) intent = new Intent(this, MainActivity.class);
         else if (activ == 2) intent = new Intent(this, RegisterActivity.class);
         else if (activ == 3) intent = new Intent(this, LoginActivity.class);
+        else if (activ == 4) intent = new Intent(this, UserActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
         finish();
@@ -148,19 +148,11 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString(APP_PREFERENCES_PASSWORD, password);
                         editor.putBoolean(APP_PREFERENCES_ACCOUNT, true);
                         editor.apply();
+                        nextActivity(4);
                     }else{
-                        new CountDownTimer(100, 3000) {
-                            @Override
-                            public void onTick(long countDownInterval) {
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                nextActivity(3);
-                            }
-                        }.start();
                         Toast tss = Toast.makeText(LoginActivity.this, R.string.notpas, Toast.LENGTH_LONG);
                         tss.show();
+                        nextActivity(3);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

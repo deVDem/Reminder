@@ -41,7 +41,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".NoteSetting" />
         <activity android:name=".ThemeSetting" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".UserActivity" />
     </application>
 
 </manifest>

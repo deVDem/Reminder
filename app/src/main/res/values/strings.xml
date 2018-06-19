@@ -17,7 +17,7 @@
     <string name="pref_style_bold">Bold</string>
     <string name="pref_style_italic">Italy</string>
     <string name="about">About the program</string>
-    <string name="creator">Creator: Roman Medvedev</string>
+    <string name="creator">Creator: deVDem</string>
     <string name="welcome">Welcome</string>
     <string name="firstset">Initial setup is in progress</string>
     <string name="letsgo">Lets go!</string>
@@ -94,4 +94,22 @@
     <string name="server">Server</string>
     <string name="phone">Phone</string>
     <string name="cancel">Cancel</string>
+    <string name="savesettingssync">Settings have been saved. Synced</string>
+    <string name="savesettingssyncerr">Settings have been saved. Sync error</string>
+    <string name="info">About account</string>
+    <string name="settinguser">User Settings</string>
+    <string name="changepass">Change password</string>
+    <string name="changename">Change name</string>
+    <string name="changeemail">Change E-Mail Address</string>
+    <string name="deleteaccount">Delete account</string>
+    <string name="spamon">Newsletter about the application is enabled</string>
+    <string name="spamoff">Newsletter about the application is disabled</string>
+    <string name="offspam">Disable emailing about the application</string>
+    <string name="onspam">Enable emailing about the application</string>
+    <string name="by_devdem">by deVDem</string>
+    <string name="success">Success</string>
+    <string name="lengtherr">Invalid length (from 2 characters)</string>
+    <string name="newpass">New password</string>
+    <string name="newemail">New E-Mail Address</string>
+    <string name="erremail">Incorrect e-mail address</string>
 </resources>
