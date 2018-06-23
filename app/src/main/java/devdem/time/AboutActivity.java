@@ -22,7 +22,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-       if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
+       if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) {
             ImageView sun = findViewById(R.id.sun);
             TextView about1 = findViewById(R.id.textView5);
             ScrollView about2 = findViewById(R.id.scrollView2);

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangeEmailRequest extends StringRequest {
-    private static final String UPDATE_REQUEST_URL = "http://94.26.174.204/Reminder/updemail.php";
+    private static final String UPDATE_REQUEST_URL = "http://devdem.ru/Reminder/updemail.php";
     private Map<String, String> params;
 
     ChangeEmailRequest(String username, String password, String newemail, Response.Listener<String> listener) {

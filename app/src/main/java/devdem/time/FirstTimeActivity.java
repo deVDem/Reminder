@@ -22,6 +22,7 @@ import java.io.OutputStreamWriter;
 import java.util.Random;
 
 import static devdem.time.MainActivity.APP_PREFERENCES_AD;
+import static devdem.time.MainActivity.APP_PREFERENCES_PERFORMANCE;
 
 public class FirstTimeActivity extends AppCompatActivity {
     private Animation anim = null;
@@ -32,9 +33,7 @@ public class FirstTimeActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_COUNTER2 = "text2";
     public static final String APP_PREFERENCES_STYLE = "style";
     private SharedPreferences mNames;
-    private final static String FILENAME = "sample.txt"; // имя файла
-
-    private static final int MY_PERMISSIONS_REQUEST = 23401;
+    private final static String FILENAME = "sample.txt";
 
 
     @Override
@@ -103,6 +102,7 @@ public class FirstTimeActivity extends AppCompatActivity {
                                                 editor.putString(APP_PREFERENCES_COUNTER, res.getString(R.string.app_name));
                                                 editor.putString(APP_PREFERENCES_COUNTER2, "");
                                                 editor.putBoolean(APP_PREFERENCES_AD, false);
+                                                editor.putBoolean(APP_PREFERENCES_PERFORMANCE, true);
                                                 editor.putInt(APP_PREFERENCES_STYLE, 1);
                                                 editor.putBoolean("dialog", true);
                                                 editor.putBoolean("advance", false);

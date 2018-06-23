@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 
 public class NoteSetting extends PreferenceActivity {
     public static final String APP_PREFERENCES = "names";
@@ -13,10 +14,8 @@ public class NoteSetting extends PreferenceActivity {
         SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==1) {
             setTheme(R.style.AppTheme);
-        }
-        if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==2) {
+        } if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==2) {
             setTheme(R.style.AppThemeLight);
-
         } if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==3) {
             setTheme(R.style.AppThemeLightOrange);
         } if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==4) {
@@ -30,6 +29,15 @@ public class NoteSetting extends PreferenceActivity {
         }
         super.onCreate(savedInstanceState);
         // загружаем предпочтения из ресурсов
-        addPreferencesFromResource(R.xml.preferences);
+        getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
+    }
+    public static class MyPreferenceFragment extends PreferenceFragment
+    {
+        @Override
+        public void onCreate(final Bundle savedInstanceState)
+        {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preferences);
+        }
     }
 }

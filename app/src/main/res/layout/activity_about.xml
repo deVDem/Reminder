@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +13,8 @@
         android:paddingTop="100dp"
         android:scaleY="3"
         android:src="@drawable/sky"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/sun"
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/image_about"/>
+        android:src="@drawable/image_about"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView5"
@@ -84,6 +85,7 @@
         android:scaleType="center"
         android:scaleX="1.1"
         android:scaleY="1.3"
-        android:src="@drawable/grass"/>
+        android:src="@drawable/grass"
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>

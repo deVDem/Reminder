@@ -16,6 +16,7 @@
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:foregroundGravity="center"
         android:gravity="center"
         android:text="@string/action_settings"
@@ -73,24 +74,20 @@
             android:text="@string/graptext"
             tools:ignore="RtlSymmetry" />
 
-        <Switch
-            android:id="@+id/switch4"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:onClick="onClick3"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="@string/noadset" />
-
-        <TextView
-            android:id="@+id/textView15"
+       <!-- <Button
+            android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:text="@string/noadabout"
-            tools:ignore="RtlSymmetry" />
-
+            android:text="@string/noadset"
+            android:onClick="onClick3"/> -->
 
     </LinearLayout>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="MEDIUM_RECTANGLE"
+        ads:adUnitId="ca-app-pub-7389415060915567/1438473909" />
 
 </LinearLayout>

@@ -11,19 +11,17 @@ import java.net.URL;
 
 public class HandleXml {
     private String version="33";
-    private String urlString=null;
+    private String urlString;
     private XmlPullParserFactory xmlFactoryObject;
     public volatile boolean parsingComplete=true;
-    public HandleXml(String url) {
+    HandleXml(String url) {
         this.urlString=url;
     }
     public String getVersion() {
         return version;
     }
-    public void parseXMLAndStoreIt(XmlPullParser myParser) {
+    private void parseXMLAndStoreIt(XmlPullParser myParser) {
         int event;
-        String text=null;
-        int ver;
         try {
             event=myParser.getEventType();
             while (event!=XmlPullParser.END_DOCUMENT) {
@@ -32,12 +30,12 @@ public class HandleXml {
                     case XmlPullParser.START_TAG:
                     break;
                     case XmlPullParser.TEXT:
-                        text=myParser.getText();
+                        myParser.getText();
                         break;
                     case XmlPullParser.END_TAG:
                         if (name.equals("version")) {
                             version=myParser.getAttributeValue(null,"value");
-                        }else{}
+                        }
                         break;
                 }
                 event=myParser.next();

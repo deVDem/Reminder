@@ -1,4 +1,5 @@
 package devdem.time;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static devdem.time.MainActivity.APP_PREFERENCES_AD;
 
 public class ThemeSetting extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static final String APP_PREFERENCES = "names";
@@ -34,16 +36,6 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         } else {
             SharedPreferences.Editor editor = mNames.edit();
             editor.putBoolean(APP_PREFERENCES_PERFORMANCE, false);
-            editor.apply();
-        }
-        Switch keksi=findViewById(R.id.switch4);
-        if (keksi.isChecked()) {
-            SharedPreferences.Editor editor = mNames.edit();
-            editor.putBoolean(APP_PREFERENCES_AD, true);
-            editor.apply();
-        } else {
-            SharedPreferences.Editor editor = mNames.edit();
-            editor.putBoolean(APP_PREFERENCES_AD, false);
             editor.apply();
         }
         Intent intent = new Intent(this, MainActivity.class);
@@ -82,19 +74,24 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_setting);
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
          if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
             Switch kek=findViewById(R.id.switch2);
             kek.setChecked(true);
         }
+        /*
         if (mNames.getBoolean(APP_PREFERENCES_AD, false)) {
-            Switch kek=findViewById(R.id.switch4);
-            kek.setChecked(true);
-        }
+            Button s = findViewById(R.id.button5);
+            s.setEnabled(false);
+        } */
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         Context context = getApplicationContext();
         Resources res = context.getResources();
-        List<String> elements = new ArrayList<String>();
+        List<String> elements = new ArrayList<>();
         elements.add(res.getString(R.string.blacktheme));
         elements.add(res.getString(R.string.whitetheme));
         elements.add(res.getString(R.string.orangetheme));
@@ -103,7 +100,7 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         elements.add(res.getString(R.string.pinktheme));
         elements.add(res.getString(R.string.darkgreentheme));
         //Создаем для spinner адаптер:
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, elements);
         //Настраиваем внешний вид выпадающего списка, используя готовый системный шаблон:
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -164,19 +161,6 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         } else {
             SharedPreferences.Editor editor = mNames.edit();
             editor.putBoolean(APP_PREFERENCES_PERFORMANCE, false);
-            editor.apply();
-        }
-    }
-    public void onClick3(View view) {
-        SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        Switch keksi=findViewById(R.id.switch4);
-        if (keksi.isChecked()) {
-            SharedPreferences.Editor editor = mNames.edit();
-            editor.putBoolean(APP_PREFERENCES_AD, true);
-            editor.apply();
-        } else {
-            SharedPreferences.Editor editor = mNames.edit();
-            editor.putBoolean(APP_PREFERENCES_AD, false);
             editor.apply();
         }
     }

@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
         CheckBox spam = findViewById(R.id.chbEmail);
         Button loginbtn = findViewById(R.id.button4);
 
-        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
+        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.anim_loginreg);
             etPs.setAnimation(anim);
             etPs.animate();

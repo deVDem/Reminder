@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangePassRequest extends StringRequest {
-    private static final String UPDATE_REQUEST_URL = "http://94.26.174.204/Reminder/updpass.php";
+    private static final String UPDATE_REQUEST_URL = "http://devdem.ru/Reminder/updpass.php";
     private Map<String, String> params;
 
     ChangePassRequest(String username, String password, String newpass, Response.Listener<String> listener) {

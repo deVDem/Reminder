@@ -19,24 +19,12 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:text="@string/info"
-        android:textSize="18sp"
-        tools:ignore="ObsoleteLayoutParam" />
-
-    <TextView
         android:id="@+id/infoacc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:gravity="bottom|left|center"
         android:text=""
         android:textSize="18sp"

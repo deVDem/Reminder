@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpamTogRequest extends StringRequest {
-    private static final String UPDATE_REQUEST_URL = "http://94.26.174.204/Reminder/spamtog.php";
+    private static final String UPDATE_REQUEST_URL = "http://devdem.ru/Reminder/spamtog.php";
     private Map<String, String> params;
 
     SpamTogRequest(String username, String password, Response.Listener<String> listener) {

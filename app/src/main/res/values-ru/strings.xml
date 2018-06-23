@@ -59,7 +59,7 @@
     <string name="musictoggle">Музыка не будет играть до конца</string>
     <string name="nomusic">Не оставлять музыку</string>
     <string name="themtext">Для любителей света. По умолчанию: <b>выключено</b></string>
-    <string name="graptext">Для некой красоты. Нагружает устройство. Экспериментальное. По умолчанию: <b>выключено</b></string>
+    <string name="graptext">Для некой красоты. Нагружает устройство. Экспериментальное. По умолчанию: <b>включено</b></string>
     <string name="notsup">Ваше устройство к сожалению не поддерживается. :(</string>
     <string name="advancent">Расширенное уведомление?</string>
     <string name="support">Связь со мной: <b>pomamed2024@gmail.com</b></string>
@@ -112,4 +112,5 @@
     <string name="newpass">Новый пароль</string>
     <string name="newemail">Новый E-Mail адрес</string>
     <string name="erremail">Некорректный E-Mail адрес</string>
+    <string name="fail">Неудачно</string>
 </resources>

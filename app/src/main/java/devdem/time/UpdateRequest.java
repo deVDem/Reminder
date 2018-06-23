@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UpdateRequest extends StringRequest {
-    private static final String UPDATE_REQUEST_URL = "http://94.26.174.204/Reminder/update.php";
+    private static final String UPDATE_REQUEST_URL = "http://devdem.ru/Reminder/update.php";
     private Map<String, String> params;
 
     UpdateRequest(String username, String password, String zagolovok, String opisanie, Response.Listener<String> listener) {

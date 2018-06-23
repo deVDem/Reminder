@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeleteAccountRequest extends StringRequest {
-    private static final String UPDATE_REQUEST_URL = "http://94.26.174.204/Reminder/delacc.php";
+    private static final String UPDATE_REQUEST_URL = "http://devdem.ru/Reminder/delacc.php";
     private Map<String, String> params;
 
     DeleteAccountRequest(String username, String password, Response.Listener<String> listener) {

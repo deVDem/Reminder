@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         // ad end
         final ImageView spenner = findViewById(R.id.spenner);
         final Animation anim = AnimationUtils.loadAnimation(this, R.anim.spenner_anim);
-        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) { new CountDownTimer(50000000, 60000) {
+        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) { new CountDownTimer(50000000, 60000) {
 
                 @Override
                 public void onTick(long countDownInterval) {
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
         Resources res = context.getResources();
         Notification.Builder builder = new Notification.Builder(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Notification.Builder builder1 = builder.setContentIntent(contentIntent)
+            builder.setContentIntent(contentIntent)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher))
                     .setTicker(zagolovok)
@@ -358,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
         Resources res = context.getResources();
         Notification.Builder builder = new Notification.Builder(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Notification.Builder builder1 = builder.setContentIntent(contentIntent)
+            builder.setContentIntent(contentIntent)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher))
                     .setTicker(zagolovok)
@@ -415,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDeleteNo(View view) {
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
-        Notification notification = builder.build();
+        builder.build();
         NotificationManager notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
@@ -487,11 +487,6 @@ public class MainActivity extends AppCompatActivity {
                                 R.string.savesettingssync, Toast.LENGTH_LONG);
                         toast.show();
                     } else {
-                        SharedPreferences.Editor editor = mNames.edit();
-                        editor.putBoolean("account", false);
-                        editor.putString("login", "");
-                        editor.putString("password", "");
-                        editor.apply();
                         Toast updfail = Toast.makeText(MainActivity.this, R.string.savesettingssyncerr, Toast.LENGTH_LONG);
                         updfail.show();
                     }

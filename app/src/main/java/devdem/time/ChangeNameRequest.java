@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangeNameRequest extends StringRequest {
-    private static final String UPDATE_REQUEST_URL = "http://94.26.174.204/Reminder/updname.php";
+    private static final String UPDATE_REQUEST_URL = "http://devdem.ru/Reminder/updname.php";
     private Map<String, String> params;
 
     ChangeNameRequest(String username, String password, String newname, Response.Listener<String> listener) {

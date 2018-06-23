@@ -34,7 +34,6 @@ public class UserActivity extends AppCompatActivity {
     String email;
     String login;
     String spam;
-    Boolean finals=false;
     SharedPreferences mNames;
     private void nextActivity(int activ) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -67,8 +66,6 @@ public class UserActivity extends AppCompatActivity {
             setTheme(R.style.AppThemeDarkGreen);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Response.Listener<String> responsseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -76,6 +73,8 @@ public class UserActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
                     final boolean success = jsonResponse.getBoolean("success");
                     if (success) {
+                        setContentView(R.layout.activity_user);
+                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                         name = jsonResponse.getString("name");
                         email = jsonResponse.getString("email");
                         login = jsonResponse.getString("username");
@@ -112,6 +111,11 @@ public class UserActivity extends AppCompatActivity {
                                                         if (success) {
                                                             Toast ok = Toast.makeText(UserActivity.this, R.string.success, Toast.LENGTH_LONG);
                                                             ok.show();
+                                                            nextActivity(4);
+                                                        }
+                                                        else {
+                                                            Toast fail = Toast.makeText(UserActivity.this, R.string.fail, Toast.LENGTH_LONG);
+                                                            fail.show();
                                                             nextActivity(4);
                                                         }
                                                     } catch (JSONException e) {
@@ -159,6 +163,11 @@ public class UserActivity extends AppCompatActivity {
                                                             SharedPreferences.Editor editor = mNames.edit();
                                                             editor.putString(APP_PREFERENCES_PASSWORD, newpass);
                                                             editor.apply();
+                                                            nextActivity(4);
+                                                        }
+                                                        else {
+                                                            Toast fail = Toast.makeText(UserActivity.this, R.string.fail, Toast.LENGTH_LONG);
+                                                            fail.show();
                                                             nextActivity(4);
                                                         }
                                                     } catch (JSONException e) {
@@ -226,6 +235,11 @@ public class UserActivity extends AppCompatActivity {
                                                 ok.show();
                                                 nextActivity(4);
                                             }
+                                            else {
+                                                Toast fail = Toast.makeText(UserActivity.this, R.string.fail, Toast.LENGTH_LONG);
+                                                fail.show();
+                                                nextActivity(4);
+                                            }
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -264,6 +278,11 @@ public class UserActivity extends AppCompatActivity {
                                                                 if (success) {
                                                                     Toast ok = Toast.makeText(UserActivity.this, R.string.success, Toast.LENGTH_LONG);
                                                                     ok.show();
+                                                                    nextActivity(4);
+                                                                }
+                                                                else {
+                                                                    Toast fail = Toast.makeText(UserActivity.this, R.string.fail, Toast.LENGTH_LONG);
+                                                                    fail.show();
                                                                     nextActivity(4);
                                                                 }
                                                             } catch (JSONException e) {

@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         loginbtn = findViewById(R.id.button4l);
         tx18 = findViewById(R.id.textView18l);
         signintx = findViewById(R.id.etSigninl);
-        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
+        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.anim_loginreg);
             logo.setAnimation(anim);
             logo.animate();

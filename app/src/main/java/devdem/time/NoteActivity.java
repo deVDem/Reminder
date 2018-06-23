@@ -19,6 +19,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -77,6 +80,9 @@ public class NoteActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         Toolbar toolbar = findViewById(R.id.toolbar2);
         toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
         setSupportActionBar(toolbar);
@@ -195,10 +201,5 @@ public class NoteActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         saveFile(FILENAME);
-        if (needed) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
 }
