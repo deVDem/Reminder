@@ -286,8 +286,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             };
-
-            LoginRequest loginRequest = new LoginRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), responseListener);
+            LoginRequest loginRequest = new LoginRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), responseListener, null);
             RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
             queue.add(loginRequest);
         }

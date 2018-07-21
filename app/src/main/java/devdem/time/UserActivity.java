@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -66,6 +67,8 @@ public class UserActivity extends AppCompatActivity {
             setTheme(R.style.AppThemeDarkGreen);
         }
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_load);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Response.Listener<String> responsseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -74,7 +77,6 @@ public class UserActivity extends AppCompatActivity {
                     final boolean success = jsonResponse.getBoolean("success");
                     if (success) {
                         setContentView(R.layout.activity_user);
-                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                         name = jsonResponse.getString("name");
                         email = jsonResponse.getString("email");
                         login = jsonResponse.getString("username");
@@ -308,7 +310,24 @@ public class UserActivity extends AppCompatActivity {
 
             }
         };
-        LoginRequest loginRequest = new LoginRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), responsseListener);
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(UserActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+                        builder.setMessage(R.string.timeouterror)
+                                .setNegativeButton(R.string.retry, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        nextActivity(4);
+                                    }
+                                })
+                                .create()
+                                .show();
+                    }
+            };
+        LoginRequest loginRequest = new LoginRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), responsseListener, errorListener);
         RequestQueue queue = Volley.newRequestQueue(UserActivity.this);
         queue.add(loginRequest);
     }

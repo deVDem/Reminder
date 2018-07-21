@@ -11,8 +11,8 @@ public class RegisterRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "http://devdem.ru/Reminder/Register.php";
     private Map<String, String> params;
 
-    RegisterRequest(String name, String username, String email, String password, String zagolovok, String opisanie, int spam, Response.Listener<String> listener) {
-        super(Method.POST, REGISTER_REQUEST_URL, listener, null);
+    RegisterRequest(String name, String username, String email, String password, String zagolovok, String opisanie, int spam, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+        super(Method.POST, REGISTER_REQUEST_URL, listener, errorListener);
         params = new HashMap<>();
         params.put("name", name);
         params.put("email", email);

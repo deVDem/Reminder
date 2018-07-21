@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -164,7 +165,24 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                RegisterRequest registerRequest = new RegisterRequest(name, login, email, password, zagolovok, opisanie, Integer.parseInt(spam), responseListener);
+                Response.ErrorListener errorListener = new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegisterActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage(R.string.timeouterror)
+                                .setNegativeButton(R.string.retry, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        nextActivity(4);
+                                    }
+                                })
+                                .create()
+                                .show();
+                    }
+                };
+
+                RegisterRequest registerRequest = new RegisterRequest(name, login, email, password, zagolovok, opisanie, Integer.parseInt(spam), responseListener, errorListener);
                 RequestQueue queue = Volley.newRequestQueue(this);
                 queue.add(registerRequest);
             }

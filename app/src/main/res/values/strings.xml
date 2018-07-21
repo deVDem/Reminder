@@ -113,4 +113,7 @@
     <string name="newemail">New E-Mail Address</string>
     <string name="erremail">Incorrect e-mail address</string>
     <string name="fail">Fail</string>
+    <string name="fornoad">Thank you for your purchase! :3</string>
+    <string name="timeouterror">Connection error. To retry?</string>
+    <string name="loading">Loading..</string>
 </resources>

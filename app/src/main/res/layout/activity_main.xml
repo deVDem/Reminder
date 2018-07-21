@@ -9,15 +9,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        app:titleTextColor="@color/white" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/white" />
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
         <ImageView
             android:id="@+id/spenner"
@@ -38,7 +40,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:paddingTop="20dp"
             android:text="@string/text1"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -74,7 +75,7 @@
             android:layout_alignParentRight="true"
             android:onClick="onDeleteNo"
             android:text="@string/delete"
-            tools:ignore="RelativeOverlap,RtlHardcoded" />
+            tools:ignore="RelativeOverlap,RtlHardcoded"/>
 
         <Button
             android:id="@+id/button"
@@ -89,15 +90,15 @@
             android:text="@string/textupdate"
             android:textColorHighlight="@color/colorPrimaryDark"
             android:textStyle="normal"
-            tools:ignore="RtlHardcoded" />
+            tools:ignore="RtlHardcoded"/>
 
-        <Button
+       <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="41dp"
+            android:layout_marginTop="10dp"
             android:onClick="onChange"
             android:text="@string/editbutton" />
 

@@ -44,6 +44,7 @@
         <activity android:name=".ThemeSetting" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserActivity" />
+
     </application>
 
 </manifest>

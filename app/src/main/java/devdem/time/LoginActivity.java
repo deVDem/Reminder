@@ -1,10 +1,12 @@
 package devdem.time;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -33,12 +36,12 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences mNames;
 
     TextView registerbtn;
-    ImageView logo;
     EditText etUn;
     EditText etPs;
     Button loginbtn;
     TextView tx18;
     TextView signintx;
+    ImageView oval;
 
     private void nextActivity(int activ) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -72,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        oval = findViewById(R.id.imageView2l);
         registerbtn = findViewById(R.id.textView12l);
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
                 nextActivity(2);
             }
         });
-        logo = findViewById(R.id.imageViewl);
         etUn = findViewById(R.id.etUsernamel);
         etPs = findViewById(R.id.etPasswordl);
         loginbtn = findViewById(R.id.button4l);
@@ -88,8 +90,6 @@ public class LoginActivity extends AppCompatActivity {
         signintx = findViewById(R.id.etSigninl);
         if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.anim_loginreg);
-            logo.setAnimation(anim);
-            logo.animate();
             etUn.setAnimation(anim);
             etUn.animate();
             etPs.setAnimation(anim);
@@ -117,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void LoginClick(final View view) {
-        final ImageView oval = findViewById(R.id.imageView2l);
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.oval_in);
         oval.setVisibility(View.VISIBLE);
         oval.setAnimation(anim);
@@ -161,7 +160,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setMessage(R.string.timeouterror)
+                        .setNegativeButton(R.string.retry, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                nextActivity(4);
+                            }
+                        })
+                        .create()
+                        .show();
+            }
+        };
+
+        LoginRequest loginRequest = new LoginRequest(username, password, responseListener, errorListener);
         RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
         queue.add(loginRequest);
 

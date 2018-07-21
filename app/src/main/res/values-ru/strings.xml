@@ -113,4 +113,7 @@
     <string name="newemail">Новый E-Mail адрес</string>
     <string name="erremail">Некорректный E-Mail адрес</string>
     <string name="fail">Неудачно</string>
+    <string name="fornoad">Спасибо за покупку! :3</string>
+    <string name="timeouterror">Ошибка подключения. Повторить попытку?</string>
+    <string name="loading">Загрузка..</string>
 </resources>

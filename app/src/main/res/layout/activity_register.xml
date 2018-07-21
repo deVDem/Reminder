@@ -3,27 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/image_about"
-        android:contentDescription="@string/app_name" />
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView17"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="95dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
@@ -39,15 +30,15 @@
         android:layout_marginStart="100dp"
         android:ems="10"
         android:hint="@string/username"
-        android:inputType="textPersonName"
+        android:inputType="textNoSuggestions"
         tools:ignore="RtlHardcoded" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_alignTop="@+id/button4"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:translationZ="2dp"
         android:visibility="invisible"
         app:srcCompat="@drawable/shape_oval"
@@ -72,11 +63,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etEmail"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:layout_marginLeft="100dp"
         tools:ignore="RtlHardcoded" />
 
     <EditText
@@ -99,11 +90,11 @@
         android:layout_below="@+id/etConfimPassr"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
         android:checked="true"
         android:gravity="fill_horizontal|center"
         android:text="@string/spam"
-        android:layout_marginStart="100dp"
         tools:ignore="RtlHardcoded" />
 
     <Button
@@ -112,19 +103,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/chbEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/loginbutton"
+        android:onClick="RegisterClick"
         android:text="@string/signup"
         android:textColor="#fff"
         android:translationZ="1dp"
-        android:onClick="RegisterClick"
         tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
@@ -132,6 +122,7 @@
         android:textColor="?attr/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/etSignup"
         android:layout_width="wrap_content"
