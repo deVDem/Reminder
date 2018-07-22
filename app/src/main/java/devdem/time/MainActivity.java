@@ -1,4 +1,7 @@
 package devdem.time;
+/* сердце всего приложения
+* сколько же тут было ошибок.. :) */
+// дохуя импортов
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -46,32 +49,34 @@ import org.json.JSONObject;
 
 import java.util.Objects;
 
+// реклама :333 и запросы
+
 public class MainActivity extends AppCompatActivity {
 
-    public int version = BuildConfig.VERSION_CODE;
-    public String inputtext1;
-    public String inputtext2;
-    public boolean big;
-    private static final int NOTIFY_ID = 1323;
-    public static final String APP_PREFERENCES = "names";
-    public static final String APP_PREFERENCES_COUNTER = "text1";
-    public static final String APP_PREFERENCES_COUNTER2 = "text2";
-    public static final String APP_PREFERENCES_STYLE = "style";
-    public static final String APP_PREFERENCES_PERFORMANCE = "graphics";
-    public static final String APP_PREFERENCES_DIALOG = "dialog";
-    public static final String APP_PREFERENCES_AD = "noad";
-    public static final String APP_PREFERENCES_ADVANCE = "advance";
-    public static final String APP_PREFERENCES_LOGIN = "login";
-    public static final String APP_PREFERENCES_PASSWORD = "password";
-    public static final String APP_PREFERENCES_ACCOUNT = "account";
+    public int version = BuildConfig.VERSION_CODE; // текущая версия приложения
+    public String inputtext1; // временное значение заголовка
+    public String inputtext2; // временное значение описания
+    public boolean big; // май дик из вери биг
+    private static final int NOTIFY_ID = 1323; // ИД уведомления(хз зачем)
+    public static final String APP_PREFERENCES = "names"; // настройки
+    public static final String APP_PREFERENCES_COUNTER = "text1"; // заголовок
+    public static final String APP_PREFERENCES_COUNTER2 = "text2"; // описание
+    public static final String APP_PREFERENCES_STYLE = "style"; // тема
+    public static final String APP_PREFERENCES_PERFORMANCE = "graphics"; // ГРАФИКА
+    public static final String APP_PREFERENCES_DIALOG = "dialog"; // просьба об отзыве
+    public static final String APP_PREFERENCES_AD = "noad"; // ДОНАТ НА РЕКЛАМУ :333333333333333333
+    public static final String APP_PREFERENCES_ADVANCE = "advance"; // расширенное уведомление ?
+    public static final String APP_PREFERENCES_LOGIN = "login"; // логин
+    public static final String APP_PREFERENCES_PASSWORD = "password"; // пароль
+    public static final String APP_PREFERENCES_ACCOUNT = "account"; // АККАУНТ
     String one;
     String two;
-    private SharedPreferences mNames;
+    private SharedPreferences mNames; // настройки
     // новый тип
     final Context context = this;
 
-    private DrawerLayout mDrawerLayout;
-    private void nextActivity(int activ, boolean finishs)
+    private DrawerLayout mDrawerLayout; // менюшка справа
+    private void nextActivity(int activ, boolean finishs) // функция посылания нахуй
     {
         Intent intent = new Intent(this, MainActivity.class);
             if(activ==1)  intent = new Intent(this, SplashActivity.class);
@@ -97,29 +102,37 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE); // настройки
         // я тупой и сразу не додумался до этого
-        if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==1) {
-            setTheme(R.style.AppTheme);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==2) {
-            setTheme(R.style.AppThemeLight);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==3) {
-            setTheme(R.style.AppThemeLightOrange);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==4) {
-            setTheme(R.style.AppThemeLightGreen);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==5) {
-            setTheme(R.style.AppThemeLightBlue);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==6) {
-            setTheme(R.style.AppThemeLightPink);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==7) {
-            setTheme(R.style.AppThemeDarkGreen);
+        switch (mNames.getInt(APP_PREFERENCES_STYLE, 1)) {
+            case 1:
+                setTheme(R.style.AppTheme);
+                break;
+            case 2:
+                setTheme(R.style.AppThemeLight);
+                break;
+            case 3:
+                setTheme(R.style.AppThemeLightOrange);
+                break;
+            case 4:
+                setTheme(R.style.AppThemeLightGreen);
+                break;
+            case 5:
+                setTheme(R.style.AppThemeLightBlue);
+                break;
+            case 6:
+                setTheme(R.style.AppThemeLightPink);
+                break;
+            case 7:
+                setTheme(R.style.AppThemeDarkGreen);
+                break;
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setContentView(R.layout.activity_main); // контент
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // ориентация
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar); // сверху такая хуйнюшка
         toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -130,19 +143,17 @@ public class MainActivity extends AppCompatActivity {
             actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout); // менюшка
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
+        NavigationView navigationView = findViewById(R.id.nav_view); // ищем менюшку
+        navigationView.setNavigationItemSelectedListener( // "слушатель менюшки"
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        // close drawer when item is tapped
+
                         mDrawerLayout.closeDrawers();
                         int id = menuItem.getItemId();
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
+
                         switch (id) {
                            /* case R.id.action_clear:
                                 onClear();
@@ -170,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        // ad
+        // реклама :3333333
         AdView mAdView = findViewById(R.id.adView);
         MobileAds.initialize(this, "ca-app-pub-7389415060915567~5491997504"); // ad
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -178,10 +189,12 @@ public class MainActivity extends AppCompatActivity {
         if (mNames.getBoolean(APP_PREFERENCES_AD, false)) {
             mAdView.setVisibility(View.INVISIBLE);
         }
-        // ad end
-        final ImageView spenner = findViewById(R.id.spenner);
+
+        final ImageView spenner = findViewById(R.id.spenner); // картиночка на фоне ,мля
+        // анимация картиночки
         final Animation anim = AnimationUtils.loadAnimation(this, R.anim.spenner_anim);
-        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) { new CountDownTimer(50000000, 60000) {
+        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) {
+            new CountDownTimer(50000000, 60000) {
 
                 @Override
                 public void onTick(long countDownInterval) {
@@ -196,10 +209,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             spenner.setVisibility(View.INVISIBLE);
         }
+        // проверка на настройки
         if (mNames.contains(APP_PREFERENCES_COUNTER)) {
             onOpen();
         }
-        if (isOnline()) {
+        if (isOnline()) { // проверяем версию приложения
             String urlxml = "http://devdemprojects.my1.ru/Projects/Napominalka/update.xml";
             HandleXml obj = new HandleXml(urlxml);
             obj.fetchXML();
@@ -211,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
             if (!obj.parsingComplete) {
                 if (Integer.parseInt(obj.getVersion()) > version) {
                     Toast toast = Toast.makeText(getApplicationContext(),
-                            R.string.aver, Toast.LENGTH_LONG);
+                            R.string.aver, Toast.LENGTH_LONG); // оповещаем пользователя, если есть обнова
                     toast.show();
                 }
             }
@@ -219,27 +233,28 @@ public class MainActivity extends AppCompatActivity {
         }
         if (mNames.getBoolean(APP_PREFERENCES_DIALOG, true)) {
             Toast toast = Toast.makeText(getApplicationContext(),
-                    R.string.rate, Toast.LENGTH_LONG);
+                    R.string.rate, Toast.LENGTH_LONG); // показываем просьбу об отзыве
             toast.show();
             SharedPreferences.Editor editor = mNames.edit();
             editor.putBoolean("dialog", false);
             editor.apply();
         }
         if (mNames.getBoolean(APP_PREFERENCES_ACCOUNT, false)) {
-            Response.Listener<String> responseListener = new Response.Listener<String>() {
+            Response.Listener<String> responseListener = new Response.Listener<String>() { // слушатель запроса
                 @Override
                 public void onResponse(String response) {
                     try {
-                        JSONObject jsonResponse = new JSONObject(response);
-                        boolean success = jsonResponse.getBoolean("success");
+                        JSONObject jsonResponse = new JSONObject(response); // пытаемся получить результат запроса
+                        boolean success = jsonResponse.getBoolean("success"); // получаем результат success
                         if (success) {
-                            String name = jsonResponse.getString("name");
-                            one = jsonResponse.getString("zagolovok");
-                            two = jsonResponse.getString("opisanie");
-                            if (!Objects.equals(inputtext1, one) || !Objects.equals(inputtext2, two)) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                                builder.setMessage(R.string.dbsearch)
+                            String name = jsonResponse.getString("name"); // получаем имя
+                            one = jsonResponse.getString("zagolovok"); // получаем заголовок
+                            two = jsonResponse.getString("opisanie"); // получаем описание
+                            if (!Objects.equals(inputtext1, one) || !Objects.equals(inputtext2, two)) { // проверяем, совпадает ли заголовок\описание
+                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this); // создаём окошечко, если нет
+                                builder.setMessage(R.string.dbsearch) // пищем об различии
                                         .setCancelable(false)
+                                        // кнопка "Сервер"
                                         .setPositiveButton(R.string.server,
                                                 new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
@@ -247,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
                                                         dialog.cancel();
                                                     }
                                                 })
+                                        // кнопка "телефон"
                                         .setNegativeButton(R.string.phone,
                                                 new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
@@ -261,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
                                                         dialog.cancel();
                                                     }
                                                 })
+                                        // кнопка "отмена"
                                         .setNeutralButton(R.string.cancel,
                                                 new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
@@ -270,13 +287,13 @@ public class MainActivity extends AppCompatActivity {
                                     builder.create();
                                     builder.show();
                             }
-                            Context c = MainActivity.this;
+                            Context c = MainActivity.this; // получаем контент
                             Toast info = Toast.makeText(MainActivity.this, c.getString(R.string.welcome)+", "+name + "!", Toast.LENGTH_LONG);
                             info.show();
                         } else {
-                            Toast tss = Toast.makeText(MainActivity.this, R.string.notpas, Toast.LENGTH_LONG);
+                            Toast tss = Toast.makeText(MainActivity.this, R.string.notpas, Toast.LENGTH_LONG); // пароль не подходит(
                             tss.show();
-                            SharedPreferences.Editor editor = mNames.edit();
+                            SharedPreferences.Editor editor = mNames.edit(); // удаляем значения аккаунта
                             editor.putBoolean(APP_PREFERENCES_ACCOUNT, false);
                             editor.apply();
                         }
@@ -286,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             };
+            // запрос на логин
             LoginRequest loginRequest = new LoginRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), responseListener, null);
             RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
             queue.add(loginRequest);
@@ -293,62 +311,67 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    // создаём расширенное уведомление
     public void onCreateNotificationBig(String zagolovok, String opisanie) {
-        Context context = getApplicationContext();
-        Intent notificationIntent = new Intent(context, MainActivity.class);
+        Context context = getApplicationContext(); // контекст приложения
+        Intent notificationIntent = new Intent(context, MainActivity.class); // откуда уведомление?
         PendingIntent contentIntent = PendingIntent.getActivity(context,
                 0, notificationIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
-        Resources res = context.getResources();
-        Notification.Builder builder = new Notification.Builder(context);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        Notification.Builder builder = new Notification.Builder(context); // инициируем уведомление
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // проверяем на андроид 5.0+
+            // создание уведомления
             builder.setContentIntent(contentIntent)
                     .setSmallIcon(R.drawable.ic_launcher)
-                    .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_launcher))
                     .setTicker(zagolovok)
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setContentTitle(zagolovok)
                     .setContentText(opisanie)
                     .setPriority(Notification.PRIORITY_MAX)
-                    .setVisibility(Notification.VISIBILITY_SECRET)
+                    .setVisibility(Notification.VISIBILITY_PUBLIC)
                     .setSmallIcon(R.drawable.notification_icon)
                     .setOngoing(true);
             Notification notification = new Notification.BigTextStyle(builder)
                     .bigText(opisanie).build();
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.cancel(NOTIFY_ID);
-            notificationManager.notify(NOTIFY_ID, notification);
+            notificationManager.cancel(NOTIFY_ID); // скрываем прошлое уведомление..
+            notificationManager.notify(NOTIFY_ID, notification); // ..и показываем его
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),
                     R.string.notsup, Toast.LENGTH_LONG);
             toast.show();
         }
     }
+    // кнопка "создать уведомление"
     public void onUpdateNotification(View view) {
-        onSave();
-        if (!big) {
+        onSave(); // сохраняем залупу всю
+        if (!big) { // проверяем, какое уведомление нам надо
             onCreateNotification(inputtext1, inputtext2);
         } else {
             onCreateNotificationBig(inputtext1, inputtext2);
         }
-            new CountDownTimer(1000,100) {
-        public void onTick ( long millisUntilFinished){
-        }
-    public void onFinish() {
-        Button button1 = findViewById(R.id.button);
-        button1.setEnabled(true);
+        new CountDownTimer(1000,100) {
+                public void onTick ( long millisUntilFinished){
+
+                }
+                public void onFinish() {
+                    Button button1 = findViewById(R.id.button);
+                    button1.setEnabled(true);
+                }
+        }.start();
     }
-}.start(); }
-    public void onSave() {
+
+    public void onSave() { // сохранение всей залупы
         SharedPreferences.Editor editor = mNames.edit();
         editor.putString(APP_PREFERENCES_COUNTER, inputtext1);
         editor.putString(APP_PREFERENCES_COUNTER2, inputtext2);
         editor.putBoolean(APP_PREFERENCES_ADVANCE, big);
         editor.apply();
     }
+    // создаём маленькое, как чей-нибудь член уведомление
     public void onCreateNotification(String zagolovok, String opisanie) {
+        // бла-бла-бла, одно и тоже, что и в onCreateNotificationBig()
         Context context = getApplicationContext();
         Intent notificationIntent = new Intent(context, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(context,
@@ -366,7 +389,7 @@ public class MainActivity extends AppCompatActivity {
                     .setContentTitle(zagolovok)
                     .setContentText(opisanie)
                     .setPriority(Notification.PRIORITY_MAX)
-                    .setVisibility(Notification.VISIBILITY_SECRET)
+                    .setVisibility(Notification.VISIBILITY_PUBLIC)
                     .setSmallIcon(R.drawable.notification_icon)
                     .setOngoing(true);
 
@@ -391,7 +414,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void onOpen() {
+    public void onOpen() { // открытие настроек
         inputtext1 = mNames.getString(APP_PREFERENCES_COUNTER, "");
         inputtext2 = mNames.getString(APP_PREFERENCES_COUNTER2, "");
         big = mNames.getBoolean(APP_PREFERENCES_ADVANCE, false);
@@ -402,7 +425,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { // проверка на нажатие кнопки меню
         int id = item.getItemId();
         switch (id) {
             case android.R.id.home:
@@ -411,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void onDeleteNo(View view) {
+    public void onDeleteNo(View view) { // функция нажатия на кнопку "удалить"
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
         builder.build();
@@ -421,13 +444,16 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.cancel(NOTIFY_ID);
         }
     }
-    protected boolean isOnline() {
+
+    protected boolean isOnline() { // функция проверки на онлайн
         ConnectivityManager cm = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         return cm.getActiveNetworkInfo() != null;
     }
-    public void onChange(View view) {
+
+    public void onChange(View view) { // функция нажатия кнопки "настройки уведомления"
+        // очень сложная залупень
         LayoutInflater li = LayoutInflater.from(context);
         @SuppressLint("InflateParams") View promptsView = li.inflate(R.layout.dialog_change, null);
         AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(context);
@@ -471,11 +497,11 @@ public class MainActivity extends AppCompatActivity {
                         });
         AlertDialog alertDialog = mDialogBuilder.create();
 
-        //и отображаем его:
+        //и отображаем всё это:
         alertDialog.show();
     }
-    public void SyncData() {
-        Response.Listener<String> responseListeners = new Response.Listener<String>() {
+    public void SyncData() { // синхронизейшен инфы
+        Response.Listener<String> responseListeners = new Response.Listener<String>() { // слушатель запроса
             @Override
             public void onResponse(String response) {
                 try {
@@ -494,8 +520,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+        // сам запрос
         UpdateRequest updateRequest = new UpdateRequest(mNames.getString(APP_PREFERENCES_LOGIN, ""), mNames.getString(APP_PREFERENCES_PASSWORD, ""), inputtext1, inputtext2, responseListeners);
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(updateRequest);
     }
+    // фух.. 527 строчек..
 }

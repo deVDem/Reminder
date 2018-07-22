@@ -1,4 +1,7 @@
 package devdem.time;
+/* ох бля.
+*  система аккаунтов.*/
+// импорты
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,21 +31,24 @@ import org.json.JSONObject;
 import static devdem.time.MainActivity.APP_PREFERENCES;
 import static devdem.time.MainActivity.APP_PREFERENCES_STYLE;
 
+// запросы
+
 public class LoginActivity extends AppCompatActivity {
-    private static final String APP_PREFERENCES_PERFORMANCE = "graphics";
-    public static final String APP_PREFERENCES_LOGIN = "login";
-    public static final String APP_PREFERENCES_PASSWORD = "password";
-    public static final String APP_PREFERENCES_ACCOUNT = "account";
-    SharedPreferences mNames;
+    private static final String APP_PREFERENCES_PERFORMANCE = "graphics"; // графикс
+    public static final String APP_PREFERENCES_LOGIN = "login"; // логин
+    public static final String APP_PREFERENCES_PASSWORD = "password"; // обосранный король
+    public static final String APP_PREFERENCES_ACCOUNT = "account"; // аккаунт
+    SharedPreferences mNames; // мммммммм настройки
 
-    TextView registerbtn;
-    EditText etUn;
-    EditText etPs;
-    Button loginbtn;
-    TextView tx18;
-    TextView signintx;
-    ImageView oval;
+    TextView registerbtn; // текст регистрации
+    EditText etUn; // поле для логина
+    EditText etPs; // поле для пароля
+    Button loginbtn; // кнопка логина
+    TextView tx18; // хз чё это
+    TextView signintx; // надпись ВХОД
+    ImageView oval; // крутая анимация в виде овала(круга)
 
+    // функция перехода на разные хуи
     private void nextActivity(int activ) {
         Intent intent = new Intent(this, MainActivity.class);
         if (activ == 1) intent = new Intent(this, MainActivity.class);
@@ -56,39 +62,50 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 1) {
-            setTheme(R.style.AppTheme);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 2) {
-            setTheme(R.style.AppThemeLight);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 3) {
-            setTheme(R.style.AppThemeLightOrange);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 4) {
-            setTheme(R.style.AppThemeLightGreen);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 5) {
-            setTheme(R.style.AppThemeLightBlue);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 6) {
-            setTheme(R.style.AppThemeLightPink);
-        } else if (mNames.getInt(APP_PREFERENCES_STYLE, 1) == 7) {
-            setTheme(R.style.AppThemeDarkGreen);
+        mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE); // подгружаем настройки
+        // определяем тему
+        switch (mNames.getInt(APP_PREFERENCES_STYLE, 1)) {
+            case 1:
+                setTheme(R.style.AppTheme);
+                break;
+            case 2:
+                setTheme(R.style.AppThemeLight);
+                break;
+            case 3:
+                setTheme(R.style.AppThemeLightOrange);
+                break;
+            case 4:
+                setTheme(R.style.AppThemeLightGreen);
+                break;
+            case 5:
+                setTheme(R.style.AppThemeLightBlue);
+                break;
+            case 6:
+                setTheme(R.style.AppThemeLightPink);
+                break;
+            case 7:
+                setTheme(R.style.AppThemeDarkGreen);
+                break;
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        oval = findViewById(R.id.imageView2l);
-        registerbtn = findViewById(R.id.textView12l);
+        setContentView(R.layout.activity_login); // контент
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // ориентация гейская
+        oval = findViewById(R.id.imageView2l); // ищем овал(круг)
+        registerbtn = findViewById(R.id.textView12l); // ищем кнопку
+        // "слушатель нажатия кнопки"
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity(2);
+                nextActivity(2); // идём нахуй
             }
         });
-        etUn = findViewById(R.id.etUsernamel);
-        etPs = findViewById(R.id.etPasswordl);
-        loginbtn = findViewById(R.id.button4l);
-        tx18 = findViewById(R.id.textView18l);
-        signintx = findViewById(R.id.etSigninl);
-        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) {
+        etUn = findViewById(R.id.etUsernamel); // ищем поле для логина
+        etPs = findViewById(R.id.etPasswordl); // ищем поле для пароля, чтобы спиздить его
+        loginbtn = findViewById(R.id.button4l); // КНОПКА
+        tx18 = findViewById(R.id.textView18l); // не ешь я текст
+        signintx = findViewById(R.id.etSigninl); // текст входа .-.
+        if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, true)) { // ГРАФОООН
+            // анимации
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.anim_loginreg);
             etUn.setAnimation(anim);
             etUn.animate();
@@ -101,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             registerbtn.setAnimation(anim);
             registerbtn.animate();
         }
+        // показываем залупу
         registerbtn.setVisibility(View.VISIBLE);
         loginbtn.setVisibility(View.VISIBLE);
         etUn.setVisibility(View.VISIBLE);
@@ -113,10 +131,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        nextActivity(1);
+        nextActivity(1); // идём нахуй
     }
 
-    public void LoginClick(final View view) {
+    public void LoginClick(final View view) { // ебать, нажали на вход
+        // анимейшен
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.oval_in);
         oval.setVisibility(View.VISIBLE);
         oval.setAnimation(anim);
@@ -130,58 +149,64 @@ public class LoginActivity extends AppCompatActivity {
         signintx.setVisibility(View.VISIBLE);
         Animation anim2 = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.anim_loginreg);
         signintx.setAnimation(anim2);
+        // получаем значения с полей
         final String username = etUn.getText().toString();
         final String password = etPs.getText().toString();
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() { // "слушатель ответа сервера"
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jsonResponse = new JSONObject(response);
+                    JSONObject jsonResponse = new JSONObject(response); // пытаемся расшифровать JSON
                     boolean success = jsonResponse.getBoolean("success");
-                    if (success) {
-                        String name = jsonResponse.getString("name");
-                        Toast info = Toast.makeText(LoginActivity.this, "Привет, "+name+"!", Toast.LENGTH_LONG);
+                    if (success) { // удачный вход
+                        String name = jsonResponse.getString("name"); // получаем имя
+                        Toast info = Toast.makeText(LoginActivity.this, "Привет, "+name+"!", Toast.LENGTH_LONG); // пишем приветсвие
                         info.show();
+                        // редактируем настройки
                         SharedPreferences.Editor editor = mNames.edit();
                         editor.putString(APP_PREFERENCES_LOGIN, username);
-                        editor.putString(APP_PREFERENCES_PASSWORD, password);
+                        editor.putString(APP_PREFERENCES_PASSWORD, password); // пиздим пароль в память телефона
                         editor.putBoolean(APP_PREFERENCES_ACCOUNT, true);
                         editor.apply();
-                        nextActivity(4);
-                    }else{
+
+                        nextActivity(4); // идём нахуй
+                    }else{ // неудачный вход.... :(
                         Toast tss = Toast.makeText(LoginActivity.this, R.string.notpas, Toast.LENGTH_LONG);
                         tss.show();
                         nextActivity(3);
                     }
-                } catch (JSONException e) {
+                } catch (JSONException e) { // ошибка, мля
                     e.printStackTrace();
                 }
 
             }
         };
 
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
+        Response.ErrorListener errorListener = new Response.ErrorListener() { // "слушатель ошибка", бля
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show(); // отображаем ошибку
+                // спрашиваем, повторить ли попытку?
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 builder.setMessage(R.string.timeouterror)
                         .setNegativeButton(R.string.retry, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                nextActivity(4);
+                                nextActivity(4); // идём нахуй
                             }
                         })
                         .create()
                         .show();
             }
         };
-
+        // отправляем запрос логина
         LoginRequest loginRequest = new LoginRequest(username, password, responseListener, errorListener);
         RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
         queue.add(loginRequest);
 
-
+        // бля, пойду посру, потом допишу код
+        // TODO: доделать анимацию
     }
 
 }

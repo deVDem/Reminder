@@ -1,5 +1,8 @@
 package devdem.time;
-
+/*
+Нагло скопированный с форума код.
+Устаревший.
+Нет комментариев.*/
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -10,7 +13,7 @@ import java.net.URL;
 
 
 public class HandleXml {
-    private String version="33";
+    private String version;
     private String urlString;
     private XmlPullParserFactory xmlFactoryObject;
     public volatile boolean parsingComplete=true;

@@ -1,4 +1,5 @@
-package devdem.time;
+package devdem.time; // заебало
+// бля, дохуя импортов чёт
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,21 +26,25 @@ import java.util.List;
 
 import static devdem.time.MainActivity.APP_PREFERENCES_AD;
 
+// реклама и донат :33333
+// фу, что это
+// реклама :333
+
 public class ThemeSetting extends AppCompatActivity implements AdapterView.OnItemSelectedListener, BillingProcessor.IBillingHandler {
-    public static final String APP_PREFERENCES = "names";
-    public static final String APP_PREFERENCES_STYLE = "style";
-    public static final String APP_PREFERENCES_PERFORMANCE = "graphics";
+    public static final String APP_PREFERENCES = "names"; // название настроек
+    public static final String APP_PREFERENCES_STYLE = "style"; // текущая тема
+    public static final String APP_PREFERENCES_PERFORMANCE = "graphics"; // настройка графики
 
-    BillingProcessor bp;
-    SharedPreferences mNames;
+    BillingProcessor bp; // ДОНАТ :3333333
+    SharedPreferences mNames; // настройки
 
-    int needselect=0;
+    int needselect=0; // хз, чё это, но оно надо
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        super.onBackPressed(); // переводим на русский: НАЖАТА КНОПКА НАЗАД
+        SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE); // АТКРЫВАЕМ НАСТРОЙКИ
 
-        Switch keks=findViewById(R.id.switch2);
+        Switch keks=findViewById(R.id.switch2); // ммм, этот кекс.. который графка.
         if (keks.isChecked()) {
             SharedPreferences.Editor editor = mNames.edit();
             editor.putBoolean(APP_PREFERENCES_PERFORMANCE, true);
@@ -51,14 +56,15 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         }
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in);
+        overridePendingTransition(R.anim.anim_activity_out, R.anim.anim_activity_in); // крутая анимация перехода
         finish();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE); // апять аткрываем настроеки
+        // ставим нужную тему из настроек
         if (mNames.getInt(APP_PREFERENCES_STYLE, 1)==1) {
             setTheme(R.style.AppTheme);
             needselect=0;
@@ -84,7 +90,8 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
             needselect=6;
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_theme_setting);
+        setContentView(R.layout.activity_theme_setting); // ставим топ-контент
+        // РЕКЛАМА :3333
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -92,6 +99,7 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
             mAdView.setVisibility(View.INVISIBLE);
         }
 
+        // восстанавливаем настройки из файла настроек
          if (mNames.getBoolean(APP_PREFERENCES_PERFORMANCE, false)) {
             Switch kek=findViewById(R.id.switch2);
             kek.setChecked(true);
@@ -104,6 +112,7 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         Context context = getApplicationContext();
         Resources res = context.getResources();
         List<String> elements = new ArrayList<>();
+        // добавляем элементы
         elements.add(res.getString(R.string.blacktheme));
         elements.add(res.getString(R.string.whitetheme));
         elements.add(res.getString(R.string.orangetheme));
@@ -120,15 +129,16 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         //Присоединяем адаптер данных к spinner:
         spinner.setAdapter(dataAdapter);
         spinner.setSelection(needselect);
-
+        // ДОНАТ :33333
         bp = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmjupeoyV65KNYu5m1ovoE/jbIkf3xsI+tiXKhYGy9bwVm705nKMVayH8ff22yXYEbCZ2pfaZRRtIXTtaxWs03doa/MDN1NjsApT+ct8vzD1JsLekUTQWSoLw/l1X6A81aSx691nVYlMmqptQnUjytYgFXluIn6j2PS+VzMFQaqnOXRkpQy6i9VoJoHFm1X3nDqE9iAyWDrDvwZ0tcW9YE1jr44CCMS0wbd84ZwbnAdJWVQmDViQ16PzVQeVxpCz9R01itdXQuY2HcHJ8l4txfF9Z95flouRPeAIJ9M3+/W4CaQp86qTldJKiRCjIVwBFVR2eDBR9EK1UE7M0hR7TqQIDAQAB", this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE); // настроекчи
         long item = parent.getSelectedItemId();
+        // определяем, а шо нажато то. И применяем настройки
         if (item==0) {
             SharedPreferences.Editor editor = mNames.edit();
             editor.putInt(APP_PREFERENCES_STYLE, 1);
@@ -162,10 +172,11 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
+      // без этой ёбанной функции выдаёт ошибку, что очень логично. нахуя она? хуй его знает
 
     }
-   public void onClick2 (View view) {
+
+   public void onClick2 (View view) { // нажали на SWITCH
         SharedPreferences mNames = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         Switch keks=findViewById(R.id.switch2);
         if (keks.isChecked()) {
@@ -179,17 +190,19 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
         }
     }
     public void onPurchaseClick(View view) {
-        bp.purchase(this, "devdem.time.noad");
+        // нажата кнопка "Отключить рекламу"
+        bp.purchase(this, "devdem.time.noad"); // АКТИВИРУЕМ ДОНАТ :333333333333333333333333333333333333333
     }
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
-
+        // хз чё это, но тоже надо типо
     }
 
     @Override
     public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
+        // ДОНАТ УСПЕШЕН :333333333333
         if(productId.equals("devdem.time.noad")) {
-            Toast.makeText(this, R.string.fornoad, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.fornoad, Toast.LENGTH_LONG).show(); // СПАСИБО ЗА ПОКУПКУУУУУ :3333333333333
             SharedPreferences.Editor editor = mNames.edit();
             editor.putBoolean("noad", true);
             editor.apply();
@@ -198,29 +211,29 @@ public class ThemeSetting extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onPurchaseHistoryRestored() {
-
+        // пока что не нужно, вроде бы.
     }
 
     @Override
     public void onBillingError(int errorCode, @Nullable Throwable error) {
-        Toast.makeText(this, R.string.error, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.error, Toast.LENGTH_LONG).show(); // ошибка доната.....
     }
 
     @Override
     public void onBillingInitialized() {
-
+        // тоже просто так нужно
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(!bp.handleActivityResult(requestCode, resultCode, data))
-            super.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data); // хз чё это, но оно так надо
     }
 
     @Override
     protected void onDestroy() {
         if(bp!=null)
-            bp.release();
+            bp.release(); // хз, зачем это
         super.onDestroy();
     }
 }
